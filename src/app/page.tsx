@@ -19,7 +19,6 @@ export default async function Home() {
   async function handleDelete(id: string) {
     "use server";
     await prisma.todo.delete({ where: { id } });
-    await prisma.todo.updateMany({ data: {} });
   }
   return (
     <main className="text-center m-auto my-12">
