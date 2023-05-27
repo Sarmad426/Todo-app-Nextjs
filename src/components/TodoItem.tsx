@@ -29,7 +29,7 @@ const TodoItem = ({
         />
         <label
           htmlFor={id}
-          className="peer-checked:line-through cursor-pointer peer-checked:text-slate-500 mx-2 text-sm"
+          className="peer-checked:line-through cursor-pointer peer-checked:text-slate-500 mx-2 text-sm lg:text-lg"
         >
           {title}
         </label>
