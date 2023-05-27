@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import trashIcon from "./delete.svg";
+import { useRouter } from "next/navigation";
 interface TodoProps {
   title: string;
   id: string;
@@ -15,6 +16,7 @@ const TodoItem = ({
   toggleTodo,
   handleDelete,
 }: TodoProps) => {
+  const router = useRouter();
   return (
     <div className="w-full m-5 px-2 grid grid-cols-2 gap-x-20 text-start lg:w-1/2 lg:text-center lg:mx-auto">
       <section>
@@ -33,14 +35,15 @@ const TodoItem = ({
         </label>
       </section>
       <section>
-        <form action="/">
-          <button
-            className="mx-5 rounded-md py-1 px-2 bg-gray-100 hover:bg-gray-300"
-            onClick={(e) => handleDelete(id)}
-          >
-            <Image src={trashIcon} alt="Delete" className="w-[90%]" />
-          </button>
-        </form>
+        <button
+          className="mx-5 rounded-md py-1 px-2 bg-gray-100 hover:bg-gray-300"
+          onClick={(e) => {
+            handleDelete(id);
+            return router.refresh();
+          }}
+        >
+          <Image src={trashIcon} alt="Delete" className="w-[90%]" />
+        </button>
       </section>
     </div>
   );
